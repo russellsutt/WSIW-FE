@@ -13,7 +13,6 @@ export default function movieReducer(state = { movies: [], loading: false } , ac
         }
         case 'DELETE_MOVIE': {
             let updatedMovies = state.movies.filter(movie => movie.id !== action.movieId)
-            console.log(updatedMovies)
             return {...state, movies: updatedMovies, loading: false}
         }
         default:

@@ -1,6 +1,5 @@
 
 const Movie = (props) => {
-    console.log(props)
     if (props.movie) {
         const movie = props.movie.movie
         return (
