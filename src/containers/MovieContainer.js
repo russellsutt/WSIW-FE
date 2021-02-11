@@ -11,11 +11,20 @@ class MovieContainer extends React.Component {
         this.props.fetchMovies()
     }
 
+    handleLoading = () => {
+        if (this.props.loading) {
+            return <h1>Loading...</h1>
+        } else {
+            return <Movies movies={this.props.movies}/>
+        }
+    }
+
 
 
     render() {
         return (
             <div>
+                {this.handleLoading()}
             </div>
         )
     }

@@ -8,6 +8,10 @@ export default function movieReducer(state = { movies: [], loading: false } , ac
             return { ...state, movies: [...state.movies], loading: true }
         }
         case 'ADD_MOVIES': {
+            let newMovies = action.movies.map(movie => {
+                return { id: cuid(), movie: movie}
+            })
+            console.log(newMovies)
             return { ...state, movies: action.movies, loading: false }
         }
         default:
