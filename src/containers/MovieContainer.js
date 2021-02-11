@@ -1,7 +1,7 @@
 import React from 'react';
 import Movies from '../components/Movies'
 import { connect } from 'react-redux'
-import { fetchMovies } from '../actions/movieActions'
+import { fetchMovies, deleteMovie } from '../actions/movieActions'
 
 
 class MovieContainer extends React.Component {
@@ -13,12 +13,12 @@ class MovieContainer extends React.Component {
 
     handleLoading = () => {
         if (this.props.loading) {
-            return <h1>Loading...</h1>
+            return <h1 className='loading-screen'>Loading...</h1>
         } else {
-            return <Movies movies={this.props.movies}/>
+            return <Movies movies={this.props.movies} deleteMovie={this.props.deleteMovie}/>
         }
-    }
 
+    }
 
 
     render() {
@@ -38,4 +38,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchMovies })(MovieContainer);
+export default connect(mapStateToProps, { fetchMovies, deleteMovie })(MovieContainer);

@@ -9,3 +9,11 @@ export const fetchMovies = () => {
             .then(resp => { dispatch({ type: 'ADD_MOVIES', movies: resp.results })})
     }
 }
+
+
+export const deleteMovie = (movieId) => {
+    return { 
+        type: 'DELETE_MOVIE',
+        movieId
+    }
+}

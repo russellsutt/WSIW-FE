@@ -4,27 +4,16 @@ import Movie from './Movie'
 
 class Movies extends Component {
 
-    state = { 
-        movieStack: []
-    }
-
-
     componentDidMount() {
         console.log(this.props)
-        this.setState({ movieStack: this.props.movies })
-    }
-
-    getNewMovie = () => {
-
     }
 
     renderMovie = () => {
-        let randomIndex = Math.floor(Math.random() * Math.floor(this.state.movieStack.length))
-        let randomMovie = this.state.movieStack.filter((movie, index) => {
-            if (index === randomIndex)
-                return movie
-        })
-        return <Movie movie={randomMovie[0]} />
+        if (this.props.movies) {
+            let randomIndex = Math.floor(Math.random() * Math.floor(this.props.movies.length))
+            let randomMovie = this.props.movies.filter((movie, index) => index === randomIndex)
+            return <Movie key={randomMovie.id} movie={randomMovie[0]} deleteMovie={this.props.deleteMovie} />
+        }
     }
 
 
@@ -33,7 +22,6 @@ class Movies extends Component {
         return (
             <div>
                 {this.renderMovie()}
-                <button onClick={this.getNewMovie}></button>
             </div>
         )
     }
